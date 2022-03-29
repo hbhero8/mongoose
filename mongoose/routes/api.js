@@ -5,16 +5,16 @@ const router = express.Router();
 const FoodController = require("../controller/FoodController");
 const UserController = require("../controller/UserController")
 const OrderController = require("../controller/OrderController")
-const CategoryController = require("../controller/OrderController");
-const create_update = require("../middleware/create_update");
+const AuthController = require("../controller/AuthController")
 const validator = require("../middleware/validator")
+const auth = require("../middleware/auth")
 
 // Foods ENDPOINT
-router.get("/foods", FoodController.get_foods);
+router.get("/foods",auth, FoodController.get_foods);
 router.get("/food/name/:name", FoodController.findOne);
 router.post("/foodCreate",validator.createfood(), FoodController.create
 );
-router.post("/foodUpdate/i d/:id", FoodController.update);
+router.post("/foodUpdate/id/:id",auth, FoodController.update);
 router.post("/foodDelete/id/:id", FoodController.delete_food);
 
 //Category ENDPOINT
