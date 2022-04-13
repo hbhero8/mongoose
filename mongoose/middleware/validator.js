@@ -15,4 +15,26 @@ const createfood = () => {
     body("category_id.name").notEmpty().withMessage('Fill category name')
   ];
 };
-exports.createfood = createfood;
+
+const createUser = () => {
+  return [
+    body("name").not().isEmpty(),
+    body("email").not().isEmpty().withMessage("Email empty!"),
+    body("phone")
+      .isNumeric()
+      .isFloat({ min: 10000000, max: 99999999 }),
+    body("password")
+      .not().isEmpty(),
+    body("role").notEmpty().withMessage('Fill role')
+  ];
+};
+
+const createOrder = () => {
+  return [
+    body("customer_id").not().isEmpty(),
+    body("deliveryman_id").not().isEmpty()
+  ];
+};
+
+
+module.exports = {createfood, createUser, createOrder};
