@@ -10,7 +10,7 @@ const validator = require("../middleware/validator")
 const auth = require("../middleware/auth")
 
 // Foods ENDPOINT
-router.get("/foods",auth, FoodController.get_foods);
+router.get("/foods", FoodController.get_foods);
 router.get("/food/name/:name", FoodController.findOne);
 router.post("/foodCreate",validator.createfood(), FoodController.create
 );
