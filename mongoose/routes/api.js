@@ -12,16 +12,16 @@ const auth = require("../middleware/auth")
 // Foods ENDPOINT
 router.get("/foods", FoodController.get_foods);
 router.get("/food/name/:name", FoodController.findOne);
-router.post("/foodCreate",validator.createfood(), FoodController.create
+router.post("/foodCreate",auth, validator.createfood(), FoodController.create
 );
 router.put("/foodUpdate/id/:id",auth, FoodController.update);
-router.delete("/foodDelete/id/:id", FoodController.delete_food);
+router.delete("/foodDelete/id/:id",auth, FoodController.delete_food);
 
 //Category ENDPOINT
-router.get("/category");
-router.post("/categoryCreate");
-router.post("/categoryUpdate/catId/:id");
-router.post("/categoryDelete/catId/:id");
+// router.get("/category");
+// router.post("/categoryCreate");
+// router.post("/categoryUpdate/catId/:id");
+// router.post("/categoryDelete/catId/:id");
 
 //User ENDPOINT
 router.get("/users",UserController.get_users);
